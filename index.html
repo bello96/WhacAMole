@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <link rel="Shortcut Icon" href="./static/img/avicon.ico" type="image/x-icon" />
+    <title>打地鼠</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .mouses-box {
+            width: 600px;
+            margin: 0px auto;
+            margin-top: 20px;
+        }
+
+        .toolbar,
+        #start,
+        #end {
+            height: 60px;
+            line-height: 60px;
+            color: white;
+            background-color: #7cd3b1;
+            border: 2px solid #60a58a;
+            border-top: none;
+        }
+
+        .levels {
+            padding-left: 30px;
+        }
+
+        .tLeft {
+            float: left;
+            margin-left: 40px;
+        }
+
+        .tRight {
+            float: right;
+            margin-right: 40px;
+        }
+
+        .mouse {
+            display: block;
+            width: 120px;
+            height: 120px;
+            transition: all .5s;
+            background: url('./static/img/mouse.png') left top no-repeat;
+            background-size: 100%;
+            float: left;
+        }
+
+        .out {
+            display: block;
+            width: 120px;
+            height: 120px;
+            transition: all .5s;
+            background: url('./static/img/mouse2.png') left top no-repeat;
+            background-size: 100%;
+            float: left;
+        }
+
+        .hit {
+            display: block;
+            width: 120px;
+            height: 120px;
+            transition: all .3s;
+            background: url('./static/img/mouse3.png') left top no-repeat;
+            background-size: 100%;
+            float: left;
+        }
+
+        #start {
+            clear: both;
+            text-align: center;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        #end {
+            clear: both;
+            text-align: center;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .isshow {
+            display: none;
+        }
+
+        #isshow {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mouses-box">
+        <div class="toolbar">
+            <div class="tLeft">
+                <span id="isshow" class="isshow">还剩</span><span id="time">60</span>秒
+                <span class="levels">
+                    难易程度
+                    <select id="level" onchange="selectChange()">
+                        <option value="2000" selected="selected">容易</option>
+                        <option value="1000">适中</option>
+                        <option value="500">困难</option>
+                    </select>
+                </span>
+            </div>
+            <div class="tRight">
+                打中<span id="numHit">0</span>个
+            </div>
+        </div>
+        <div id="mouseFrame" class="clearfix">
+
+        </div>
+
+        <button id="start" onclick="start()">开始游戏</button>
+        <button id="end" disabled onclick="gameOver()">结束游戏</button>
+
+        <div id="audiobox">
+            <audio src="./static/mp3/no.mp3"></audio>
+            <audio src="./static/mp3/yes.mp3"></audio>
+            <audio src="./static/mp3/end.mp3"></audio>
+        </div>
+
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
